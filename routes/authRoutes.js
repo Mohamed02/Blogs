@@ -1,5 +1,13 @@
 const passport = require('passport');
-require('dotenv').config();
+const dotenv=require('dotenv');
+
+
+
+// Load environment-specific variables based on NODE_ENV
+const environment = process.env.NODE_ENV;
+const envFile = `.env.${environment}`;
+dotenv.config({ path: envFile });
+
 
 module.exports = app => {
   app.get(
