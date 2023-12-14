@@ -14,7 +14,7 @@ module.exports = app => {
     passport.authenticate('google'),
     (req, res) => {
       console.log("1. Redriected to callback path after authentication");
-      res.redirect('http://localhost:3000/blogs');
+      res.redirect(`${process.env.CLIENT_URI}/blogs`);
     }
   );
 
