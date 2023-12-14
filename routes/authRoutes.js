@@ -1,4 +1,5 @@
 const passport = require('passport');
+require('dotenv').config();
 
 module.exports = app => {
   app.get(
@@ -12,8 +13,8 @@ module.exports = app => {
     '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
-      console.log("1. Redriected to callback path after authentication");
-      res.redirect('http://localhost:3000/blogs');
+      console.log("1. Redriected to callback path after authentication to the url ",process.env.REACT_APP_CLIENT_URI);
+      res.redirect(`${process.env.CLIENT_URI}/blogs`);
     }
   );
 
