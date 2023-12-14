@@ -1,12 +1,20 @@
 const passport = require('passport');
+const dotenv=require('dotenv');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys= require('../config/keys');
 const User = mongoose.model('User');
+
+// Load environment-specific variables based on NODE_ENV
+const environment = process.env.NODE_ENV;
+const envFile = `.env.${environment}`;
+dotenv.config({ path: envFile });
+
+
 passport.use(
     new GoogleStrategy(
       {
-        callbackURL: '/auth/google/callback',
+        callbackURL: `${process.env.CLIENT_URI}/auth/google/callback`,
         clientID: keys.googleClientID,
         clientSecret: keys.googleClientSecret,
         proxy: true
