@@ -22,7 +22,7 @@ module.exports = app => {
     passport.authenticate('google'),
     (req, res) => {
       console.log("1. Redriected to callback path after authentication");
-      res.redirect(`${process.env.CLIENT_URI}/blogs`);
+      res.redirect(`https://dymmyblogsapp456787654.shop/blogs`);
     }
   );
 
