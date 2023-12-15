@@ -14,7 +14,7 @@ dotenv.config({ path: envFile });
 passport.use(
     new GoogleStrategy(
       {
-        callbackURL: `${process.env.CLIENT_URI}/auth/google/callback`,
+        callbackURL: `https://dymmyblogsapp456787654.shop/auth/google/callback`,
         clientID: keys.googleClientID,
         clientSecret: keys.googleClientSecret,
         proxy: true
