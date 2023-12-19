@@ -12,5 +12,7 @@ jobs:
         run: |
           cd client
           yarn install
+          npm run build
+          cp -r build/* /var/myblogapp.com
       - name: Start Backend server
         run: pm2 start index.js --name="server"
