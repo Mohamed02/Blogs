@@ -1,0 +1,9 @@
+name: 'Deploy Code into AWS'
+description: "Deploy and build Code into AWS"
+on: [push, workflow_dispatch]
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
