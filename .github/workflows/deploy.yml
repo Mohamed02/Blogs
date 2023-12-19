@@ -1,5 +1,4 @@
 name: 'Deploy Code into AWS'
-description: "Deploy and build Code into AWS"
 on: [push, workflow_dispatch]
 jobs:
   deploy:
