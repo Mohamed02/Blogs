@@ -9,4 +9,4 @@ jobs:
       - name: Install Dependecies
         run: npm ci
       - name: Start Backend server
-        run: pm2 start index.js --name="server" --env production
+        run: pm2 start index.js --name="server"
