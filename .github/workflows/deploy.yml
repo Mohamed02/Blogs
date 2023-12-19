@@ -15,10 +15,10 @@ jobs:
         with:
           path: ~/.cache/yarn
           key: yarn-deps-${{ hashFiles('**/yarn.lock') }}
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
       - name: Build the React code
         run: |
+          cd client
+          yarn install --frozen-lockfile
           npm run build
           cp -r build/* /var/www/myblogapp.com
       - name: Start Backend server
