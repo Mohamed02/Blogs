@@ -50,16 +50,5 @@ const BlogForm = () => {
   )
 }
 
-function validate(values) {
-    const errors = {};
-  
-    formFields.forEach(({ name }) => {
-      if (!values[name]) {
-        errors[name] = 'You must provide a value';
-      }
-    });
-  
-    return errors;
-  }
 
 export default BlogForm;
