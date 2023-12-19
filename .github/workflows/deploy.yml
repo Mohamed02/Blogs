@@ -8,5 +8,9 @@ jobs:
         uses: actions/checkout@v3
       - name: Install Dependecies
         run: npm ci
+      - name: Build the React code
+        run: npm run build
+      - name: Move the static files to Nginx target
+        run: cp -r build/* /var/myblogapp.com
       - name: Start Backend server
         run: pm2 start index.js --name="server"
