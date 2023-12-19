@@ -9,7 +9,9 @@ jobs:
       - name: Install Dependecies
         run: npm ci
       - name: Build the React code
-        run: cd client && npm run build
+        run: |
+          cd client
+          npm run build
       - name: Move the static files to Nginx target
         run: cp -r build/* /var/myblogapp.com
       - name: Start Backend server
