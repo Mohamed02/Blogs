@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import router from './routeProvider';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchUser } from './store/auth-actions';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
   useEffect(()=>{
     console.log('APP Loaded');
     dispatch(fetchUser());
-  },[])
+  },[dispatch])
   return (
     <div className="App">
      
