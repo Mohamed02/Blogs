@@ -10,11 +10,12 @@ const environment = process.env.NODE_ENV;
 const envFile = `.env.${environment}`;
 dotenv.config({ path: envFile });
 
+const hostURI= process.env.CLIENT_URI;
 
 passport.use(
     new GoogleStrategy(
       {
-        callbackURL: `https://dymmyblogsapp456787654.shop/auth/google/callback`,
+        callbackURL: `${hostURI}/auth/google/callback`,
         clientID: keys.googleClientID,
         clientSecret: keys.googleClientSecret,
         proxy: true

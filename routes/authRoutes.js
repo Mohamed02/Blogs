@@ -1,13 +1,12 @@
 const passport = require('passport');
 const dotenv=require('dotenv');
 
-
-
 // Load environment-specific variables based on NODE_ENV
 const environment = process.env.NODE_ENV;
 const envFile = `.env.${environment}`;
 dotenv.config({ path: envFile });
 
+const hostURI= process.env.CLIENT_URI;
 
 module.exports = app => {
   app.get(
@@ -22,7 +21,7 @@ module.exports = app => {
     passport.authenticate('google'),
     (req, res) => {
       console.log("1. Redriected to callback path after authentication");
-      res.redirect(`https://dymmyblogsapp456787654.shop/blogs`);
+      res.redirect(`${hostURI}/blogs`);
     }
   );
 

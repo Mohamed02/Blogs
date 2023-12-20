@@ -22,4 +22,6 @@ jobs:
           npm run build
           cp -r build/* /var/www/myblogapp.com
       - name: Start Backend server
+        env:
+            NODE_ENV: production
         run: pm2 start index.js --name="server"
