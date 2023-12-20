@@ -24,4 +24,4 @@ jobs:
       - name: Start Backend server
         env:
           NODE_ENV: production
-        run: node index.js
+        run: pm2 start index.js --name "Server"
