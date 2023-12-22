@@ -22,7 +22,7 @@ jobs:
         run: |
           pm2 start index.js --name "Server"
           pm2 save
-     - name: Check for Changes in Client Folder
+      - name: Check for Changes in Client Folder
         id: check_client_changes
         run: |
           if [ -n "$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^client/')" ]; then
