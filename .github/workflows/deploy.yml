@@ -44,10 +44,18 @@ jobs:
         with:
           path: ~/.cache/yarn
           key: yarn-deps-${{ hashFiles('**/yarn.lock') }}
-      - name: Build the React code
+      - name: Install React Dependencies
         if: steps.check_client_changes.outputs.result == 'true'
         run: |
           cd client
           yarn install --frozen-lockfile
+      - name: Build the React code
+        if: steps.check_client_changes.outputs.result == 'true'
+        run: |
+          cd client
           npm run build
+      - name: Copy Build Files to Nginx Container
+        if: steps.check_client_changes.outputs.result == 'true'
+        run: |
+          cd client
           cp -r build/* /var/www/myblogapp.com
