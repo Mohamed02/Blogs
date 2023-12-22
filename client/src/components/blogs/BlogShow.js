@@ -8,7 +8,6 @@ const BlogShow = (props) => {
         console.log('state.blog', state.blog);
         return state.blog.blogs
     });
-    console.log('blogsList',blogsList);
     const blogDetail = blogsList?.find(blog=>blog._id===_id);
     console.log('blogDetail',blogDetail);
   return (
