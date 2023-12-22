@@ -8,14 +8,19 @@ jobs:
         uses: actions/checkout@v3
       - name: Install Dependecies
         run: npm ci
-    # Check if the PM2 process named "Server" is running
+      # Check if the PM2 process named "Server" is running
       - name: Check PM2 Process Status
         id: check_pm2_status
-        run: pm2 show Server >/dev/null 2>&1 || echo "Process not found"
-    # Stop the PM2 process named "Server" if it's running
+        run: |
+          pm2 show Server > /dev/null 2>&1
+          echo "Process found"
+          exit 0
+        continue-on-error: true
+
+      # Stop the PM2 process named "Server" if it's running
       - name: Stop PM2 Process
-        if: steps.check_pm2_status.run != 'Process not found'
-        run: pm2 stop Server
+        if: steps.check_pm2_status.outcome == 'success'
+        run: pm2 stop Server || true
       - name: Start Backend server
         env:
           NODE_ENV: production
