@@ -59,3 +59,5 @@ jobs:
         run: |
           cd client
           cp -r build/* /var/www/myblogapp.com
+      - name: Start mongodb
+        run: sudo systemctl start mongod
