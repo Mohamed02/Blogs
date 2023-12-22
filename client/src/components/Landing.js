@@ -5,7 +5,7 @@ const Landing = () => {
   return (
     <div style={{ textAlign: 'center' }}>
     <h1>
-      Blogster!
+      Blogster Mohamed!
     </h1>
     Write private blogs
   </div>
