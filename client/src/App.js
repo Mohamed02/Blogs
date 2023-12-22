@@ -9,11 +9,11 @@ import { fetchUser } from './store/auth-actions';
 function App() {
   const dispatch = useDispatch();
   useEffect(()=>{
-    console.log('APP Loaded');
+console.log('APP Loaded');
     dispatch(fetchUser());
   },[dispatch])
   return (
-    <div className="App">
+    <div className="container">
      
       <RouterProvider router={router} >
       <Header></Header>

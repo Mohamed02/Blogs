@@ -2,16 +2,23 @@ import { createSlice } from "@reduxjs/toolkit";
 const blogSlice = createSlice({
     name: 'blog',
     initialState:{
-        blogs:[]
+        blogs:[],
+        blogUnderReview: {
+            title: "",
+            content: ""
+        }
     },
     reducers:{
         setBlogsList(state, action){
-            console.log('action payload', action);
             state.blogs = action.payload;
         },
         updateForm(state,action){
             
+        },
+        setBlogForReview(state,action){
+            state.blogUnderReview= action.payload
         }
     }
 })
+export const {setBlogForReview} = blogSlice.actions;
 export default blogSlice;

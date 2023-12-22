@@ -3,18 +3,20 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import BlogField from './BlogField';
 import {Form ,Field} from 'react-final-form';
-import { addBlog } from '../../store/blog-actions';
-import { useDispatch } from 'react-redux';
+import {setBlogForReview} from '../../store/blog-slice'
+import { useDispatch, useSelector } from 'react-redux';
 const formFields = [
     { label: 'Blog Title', name: 'title' },
     { label: 'Content', name: 'content' }
   ];
   
-const BlogForm = () => {
+const BlogForm = (props) => {
 
   const dispatch = useDispatch();
+  const initialValues = useSelector(state => state.blog.blogUnderReview);
   const onSubmit = async values => {
-   dispatch(addBlog(values))
+   dispatch(setBlogForReview(values))
+    props.reviewBlog();
   }
   const renderFields= () => {
     return formFields.map(({ label, name }) => {
@@ -32,6 +34,7 @@ const BlogForm = () => {
   return (
     <div>
       <Form
+      initialValues={initialValues}
        onSubmit={onSubmit}
        render={({handleSubmit, form, submitting, pristine, values})=>(
         <form onSubmit={handleSubmit}>

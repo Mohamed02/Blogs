@@ -4,7 +4,7 @@ const Blog = mongoose.model('Blog');
 
 module.exports= app=>{
     app.get('/api/blogs',requireLogin, async(req,res)=>{
-        const blogs = await Blog.find({}).then((blogs)=>{
+        const blogs = await Blog.find({_user: req.user.id}).then((blogs)=>{
                 res.send(blogs);
         }).catch(err=>{
             res.send("unable to retrieve data")
@@ -15,7 +15,8 @@ module.exports= app=>{
         const { title, content } = req.body;
         const blog = new Blog({
             title,
-            content
+            content,
+            _user: req.user.id
         });
         try{
             await blog.save();

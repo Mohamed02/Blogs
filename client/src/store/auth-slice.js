@@ -12,7 +12,7 @@ const authSlice = createSlice({
             state.loggedIn = false;
         },
         setLoginData(state,action){
-            console.log('inside set login data', action.payload)
+console.log('inside set login data', action.payload)
             state.user = action.payload;
         }
     }

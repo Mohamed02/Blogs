@@ -1,10 +1,14 @@
-import React from 'react'
-import BlogForm from './BlogForm'
+import React,{ useState } from 'react'
+import BlogForm from './BlogForm';
+import BlogFormReview from './BlogFormReview'
 
 const BlogNew = () => {
+
+  const [reviewStatus, setReviewStatus]= useState(false)
   return (
     <div>
-        <BlogForm/>
+        {!reviewStatus && <BlogForm reviewBlog={()=>setReviewStatus(true)}/> }
+        {reviewStatus &&  <BlogFormReview cancelReview={()=>setReviewStatus(false)}/> }
     </div>
     
   )
