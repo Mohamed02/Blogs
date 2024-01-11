@@ -3,6 +3,7 @@ const dotenv=require('dotenv');
 
 // Load environment-specific variables based on NODE_ENV
 const environment = process.env.NODE_ENV;
+console.log('CURRENT ENVIRONMENT', environment);
 const envFile = `.env.${environment}`;
 dotenv.config({ path: envFile });
 
