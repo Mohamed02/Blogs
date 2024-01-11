@@ -16,7 +16,9 @@ jobs:
           echo "Process found"
           exit 0
         continue-on-error: true
-
+      # Set environment as Production
+      - name: Set environment variable for production
+        run: echo "NODE_ENV=production" >> $GITHUB_ENV
       # Stop the PM2 process named "Server" if it's running
       - name: Stop PM2 Process
         if: steps.check_pm2_status.outcome == 'success'
